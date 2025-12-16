@@ -36,18 +36,20 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-950 to-slate-900">
-      <div className="bg-slate-800 p-8 rounded-lg shadow-2xl border border-slate-700 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-950 dark:to-slate-900">
+      <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-2xl border border-slate-200 dark:border-slate-700 w-full max-w-md">
         <div className="flex items-center justify-center mb-8">
           <div className="bg-blue-600 p-3 rounded-full shadow-lg shadow-blue-500/30">
             <LogIn className="w-8 h-8 text-white" />
           </div>
         </div>
 
-        <h2 className="text-3xl font-bold text-center text-slate-100 mb-2">
+        <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-slate-100 mb-2">
           Admin Login
         </h2>
-        <p className="text-center text-slate-400 mb-8">Access your dashboard</p>
+        <p className="text-center text-slate-600 dark:text-slate-400 mb-8">
+          Access your dashboard
+        </p>
 
         {error && (
           <div className="mb-4 p-3 bg-red-500/10 border border-red-500/30 text-red-400 rounded-md text-sm">
@@ -70,7 +72,7 @@ export const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={isLoading}
-              className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed placeholder-slate-500"
+              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed placeholder-slate-500"
               placeholder="admin@example.com"
             />
           </div>
@@ -89,7 +91,7 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               disabled={isLoading}
-              className="w-full px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed placeholder-slate-500"
+              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition disabled:opacity-50 disabled:cursor-not-allowed placeholder-slate-500"
               placeholder="••••••••"
             />
           </div>

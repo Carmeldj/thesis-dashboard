@@ -87,7 +87,9 @@ export const Dashboard = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-400">Loading dashboard...</div>
+          <div className="text-xl text-slate-600 dark:text-slate-400">
+            Loading dashboard...
+          </div>
         </div>
       </Layout>
     );
@@ -96,8 +98,10 @@ export const Dashboard = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl font-bold text-slate-100 mb-2">Dashboard</h1>
-        <p className="text-slate-400 mb-8">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+          Dashboard
+        </h1>
+        <p className="text-slate-600 dark:text-slate-400 mb-8">
           Overview of your platform statistics
         </p>
 
@@ -105,17 +109,19 @@ export const Dashboard = () => {
           {statCards.map((card, index) => (
             <div
               key={index}
-              className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-6 hover:shadow-2xl hover:border-slate-600 transition"
+              className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-6 hover:shadow-2xl hover:border-slate-300 dark:hover:border-slate-600 transition"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`${card.color} p-3 rounded-lg shadow-lg`}>
                   <card.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-slate-400 text-sm font-medium mb-1">
+              <h3 className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-1">
                 {card.title}
               </h3>
-              <p className="text-3xl font-bold text-slate-100">{card.value}</p>
+              <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+                {card.value}
+              </p>
             </div>
           ))}
         </div>

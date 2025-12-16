@@ -117,7 +117,7 @@ export const Users = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-400">Loading users...</div>
+          <div className="text-xl text-slate-600 dark:text-slate-400">Loading users...</div>
         </div>
       </Layout>
     );
@@ -126,30 +126,30 @@ export const Users = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl font-bold text-slate-100 mb-2">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
           Users Management
         </h1>
-        <p className="text-slate-400 mb-6">Manage all platform users</p>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">Manage all platform users</p>
 
         {/* Filters */}
-        <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4 mb-6">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search by name, username, or email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
               />
             </div>
             <div className="flex items-center gap-2">
-              <Filter className="text-slate-400 w-5 h-5" />
+              <Filter className="text-slate-600 dark:text-slate-400 w-5 h-5" />
               <select
                 value={filterRole}
                 onChange={(e) => setFilterRole(e.target.value as any)}
-                className="px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
               >
                 <option value="all">All Users</option>
                 <option value="streamer">Streamers</option>
@@ -161,24 +161,24 @@ export const Users = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Total Users</p>
-            <p className="text-2xl font-bold text-slate-100">{users.length}</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Total Users</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{users.length}</p>
           </div>
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Streamers</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Streamers</p>
             <p className="text-2xl font-bold text-purple-400">
               {users.filter((u) => u.isStreamer).length}
             </p>
           </div>
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Regular Users</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Regular Users</p>
             <p className="text-2xl font-bold text-blue-400">
               {users.filter((u) => !u.isStreamer).length}
             </p>
           </div>
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Verified</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Verified</p>
             <p className="text-2xl font-bold text-green-400">
               {users.filter((u) => u.is_verified).length}
             </p>
@@ -186,37 +186,37 @@ export const Users = () => {
         </div>
 
         {/* Users List */}
-        <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           {filteredUsers.length === 0 ? (
-            <div className="p-8 text-center text-slate-400">
+            <div className="p-8 text-center text-slate-600 dark:text-slate-400">
               No users found matching your criteria
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-900 border-b border-slate-700">
+                <thead className="bg-slate-900 border-b border-slate-200 dark:border-slate-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       User
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Contact
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Role
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Joined
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-slate-800 divide-y divide-slate-700">
+                <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-700">
                   {filteredUsers.map((user) => (
                     <tr key={user.id} className="hover:bg-slate-700/50">
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -241,12 +241,12 @@ export const Users = () => {
                             )}
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-slate-100">
+                            <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
                               {user.firstname && user.lastname
                                 ? `${user.firstname} ${user.lastname}`
                                 : user.username || "N/A"}
                             </div>
-                            <div className="text-sm text-slate-400">
+                            <div className="text-sm text-slate-600 dark:text-slate-400">
                               @{user.username || "no-username"}
                             </div>
                           </div>
@@ -254,11 +254,11 @@ export const Users = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-slate-200 flex items-center gap-1">
-                          <Mail className="w-4 h-4 text-slate-400" />
+                          <Mail className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                           {user.email}
                         </div>
                         {user.phoneNumber && (
-                          <div className="text-sm text-slate-400 flex items-center gap-1">
+                          <div className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-1">
                             <Phone className="w-4 h-4 text-slate-500" />
                             {user.phoneNumber}
                           </div>
@@ -308,7 +308,7 @@ export const Users = () => {
                           )}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400">
                         <div className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
                           {new Date(user.createdAt).toLocaleDateString()}
@@ -333,10 +333,10 @@ export const Users = () => {
         {/* Detail Modal */}
         {selectedUser && (
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-slate-800 border border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-slate-100">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                     User Details
                   </h2>
                   <button
@@ -344,7 +344,7 @@ export const Users = () => {
                       setSelectedUser(null);
                       setShowDeleteConfirm(false);
                     }}
-                    className="text-slate-400 hover:text-slate-200"
+                    className="text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                   >
                     ✕
                   </button>
@@ -369,12 +369,12 @@ export const Users = () => {
                       </div>
                     )}
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-100">
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
                         {selectedUser.firstname && selectedUser.lastname
                           ? `${selectedUser.firstname} ${selectedUser.lastname}`
                           : selectedUser.username || "N/A"}
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         @{selectedUser.username || "no-username"}
                       </p>
                     </div>
@@ -435,9 +435,9 @@ export const Users = () => {
                   )}
 
                   {selectedUser.shop && (
-                    <div className="border-t border-slate-700 pt-4">
+                    <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
                       <p className="text-sm text-slate-500 mb-2">Shop</p>
-                      <div className="bg-slate-900 p-4 rounded-lg border border-slate-700">
+                      <div className="bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
                         <div className="flex items-center justify-between mb-2">
                           <p className="font-medium text-slate-200">
                             {selectedUser.shop.name || "Unnamed Shop"}
@@ -452,10 +452,10 @@ export const Users = () => {
                             {selectedUser.shop.isActive ? "Active" : "Pending"}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-400">
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
                           {selectedUser.shop.email}
                         </p>
-                        <p className="text-sm text-slate-400">
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
                           {selectedUser.shop.address}
                         </p>
                       </div>
@@ -522,12 +522,12 @@ export const Users = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="border-t border-slate-700 pt-4">
+                    <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
                       <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-lg mb-4">
                         <p className="text-red-400 font-medium mb-2">
                           Are you sure you want to delete this user?
                         </p>
-                        <p className="text-slate-400 text-sm">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm">
                           This action cannot be undone. All user data will be
                           permanently removed.
                         </p>

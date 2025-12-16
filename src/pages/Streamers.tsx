@@ -86,7 +86,7 @@ export const Streamers = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-400">Loading streamers...</div>
+          <div className="text-xl text-slate-600 dark:text-slate-400">Loading streamers...</div>
         </div>
       </Layout>
     );
@@ -95,32 +95,32 @@ export const Streamers = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl font-bold text-slate-100 mb-2">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
           Streamers Management
         </h1>
-        <p className="text-slate-400 mb-6">
+        <p className="text-slate-600 dark:text-slate-400 mb-6">
           Validate and manage streamer accounts
         </p>
 
         {/* Filters */}
-        <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4 mb-6">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search by name, username, or email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
               />
             </div>
             <div className="flex items-center gap-2">
-              <Filter className="text-slate-400 w-5 h-5" />
+              <Filter className="text-slate-600 dark:text-slate-400 w-5 h-5" />
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value as any)}
-                className="px-4 py-2 bg-slate-900 border border-slate-600 text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
               >
                 <option value="all">All Streamers</option>
                 <option value="verified">Verified</option>
@@ -132,20 +132,20 @@ export const Streamers = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Total Streamers</p>
-            <p className="text-2xl font-bold text-slate-100">
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Total Streamers</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">
               {streamers.length}
             </p>
           </div>
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Verified</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Verified</p>
             <p className="text-2xl font-bold text-green-400">
               {streamers.filter((s) => s.is_verified).length}
             </p>
           </div>
-          <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 p-4">
-            <p className="text-slate-400 text-sm">Pending</p>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
+            <p className="text-slate-600 dark:text-slate-400 text-sm">Pending</p>
             <p className="text-2xl font-bold text-orange-400">
               {streamers.filter((s) => !s.is_verified).length}
             </p>
@@ -153,34 +153,34 @@ export const Streamers = () => {
         </div>
 
         {/* Streamers List */}
-        <div className="bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
           {filteredStreamers.length === 0 ? (
-            <div className="p-8 text-center text-slate-400">
+            <div className="p-8 text-center text-slate-600 dark:text-slate-400">
               No streamers found matching your criteria
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-900 border-b border-slate-700">
+                <thead className="bg-slate-900 border-b border-slate-200 dark:border-slate-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Streamer
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Contact
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Joined
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-slate-800 divide-y divide-slate-700">
+                <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-700">
                   {filteredStreamers.map((streamer) => (
                     <tr key={streamer.id} className="hover:bg-slate-700/50">
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -205,12 +205,12 @@ export const Streamers = () => {
                             )}
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-slate-100">
+                            <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
                               {streamer.firstname && streamer.lastname
                                 ? `${streamer.firstname} ${streamer.lastname}`
                                 : streamer.username || "N/A"}
                             </div>
-                            <div className="text-sm text-slate-400">
+                            <div className="text-sm text-slate-600 dark:text-slate-400">
                               @{streamer.username || "no-username"}
                             </div>
                           </div>
@@ -218,11 +218,11 @@ export const Streamers = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-slate-200 flex items-center gap-1">
-                          <Mail className="w-4 h-4 text-slate-400" />
+                          <Mail className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                           {streamer.email}
                         </div>
                         {streamer.phoneNumber && (
-                          <div className="text-sm text-slate-400 flex items-center gap-1">
+                          <div className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-1">
                             <Phone className="w-4 h-4 text-slate-500" />
                             {streamer.phoneNumber}
                           </div>
@@ -249,7 +249,7 @@ export const Streamers = () => {
                           )}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-400">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400">
                         <div className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
                           {new Date(streamer.createdAt).toLocaleDateString()}
@@ -285,15 +285,15 @@ export const Streamers = () => {
         {/* Detail Modal */}
         {selectedStreamer && (
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-slate-800 border border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-slate-100">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                     Streamer Details
                   </h2>
                   <button
                     onClick={() => setSelectedStreamer(null)}
-                    className="text-slate-400 hover:text-slate-200"
+                    className="text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
                   >
                     ✕
                   </button>
@@ -318,12 +318,12 @@ export const Streamers = () => {
                       </div>
                     )}
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-100">
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
                         {selectedStreamer.firstname && selectedStreamer.lastname
                           ? `${selectedStreamer.firstname} ${selectedStreamer.lastname}`
                           : selectedStreamer.username || "N/A"}
                       </h3>
-                      <p className="text-slate-400">
+                      <p className="text-slate-600 dark:text-slate-400">
                         @{selectedStreamer.username || "no-username"}
                       </p>
                     </div>
