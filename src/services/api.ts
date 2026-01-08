@@ -36,10 +36,7 @@ api.interceptors.response.use(
 // Auth Service
 export const authService = {
   loginAdmin: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-    const response = await api.post(
-      `${API_BASE_URL}/auth/admin/login`,
-      credentials
-    );
+    const response = await api.post(`${API_BASE_URL}/auth/login`, credentials);
     return response.data;
   },
 };
