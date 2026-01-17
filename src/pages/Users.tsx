@@ -117,7 +117,7 @@ export const Users = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-600 dark:text-slate-400">Loading users...</div>
+          <div className="text-xl text-slate-600">Chargement des utilisateurs...</div>
         </div>
       </Layout>
     );
@@ -126,34 +126,34 @@ export const Users = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-          Users Management
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          Gestion des Utilisateurs
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-6">Manage all platform users</p>
+        <p className="text-slate-600 mb-6">Gérer tous les utilisateurs de la plateforme</p>
 
         {/* Filters */}
-        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4 mb-6">
+        <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4 mb-6">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 dark:text-slate-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-600 w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search by name, username, or email..."
+                placeholder="Rechercher par nom, pseudo ou email..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-300 text-slate-900 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none placeholder-slate-500"
               />
             </div>
             <div className="flex items-center gap-2">
-              <Filter className="text-slate-600 dark:text-slate-400 w-5 h-5" />
+              <Filter className="text-slate-600 w-5 h-5" />
               <select
                 value={filterRole}
                 onChange={(e) => setFilterRole(e.target.value as any)}
-                className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-100 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="px-4 py-2 bg-slate-50 border border-slate-300 text-slate-900 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
               >
-                <option value="all">All Users</option>
+                <option value="all">Tous les Utilisateurs</option>
                 <option value="streamer">Streamers</option>
-                <option value="user">Regular Users</option>
+                <option value="user">Utilisateurs Réguliers</option>
               </select>
             </div>
           </div>
@@ -161,64 +161,64 @@ export const Users = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
-            <p className="text-slate-600 dark:text-slate-400 text-sm">Total Users</p>
-            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{users.length}</p>
+          <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4">
+            <p className="text-slate-600 text-sm">Total Utilisateurs</p>
+            <p className="text-2xl font-bold text-slate-900">{users.length}</p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
-            <p className="text-slate-600 dark:text-slate-400 text-sm">Streamers</p>
-            <p className="text-2xl font-bold text-purple-400">
+          <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4">
+            <p className="text-slate-600 text-sm">Streamers</p>
+            <p className="text-2xl font-bold text-purple-600">
               {users.filter((u) => u.isStreamer).length}
             </p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
-            <p className="text-slate-600 dark:text-slate-400 text-sm">Regular Users</p>
-            <p className="text-2xl font-bold text-blue-400">
+          <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4">
+            <p className="text-slate-600 text-sm">Utilisateurs Réguliers</p>
+            <p className="text-2xl font-bold text-blue-600">
               {users.filter((u) => !u.isStreamer).length}
             </p>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-4">
-            <p className="text-slate-600 dark:text-slate-400 text-sm">Verified</p>
-            <p className="text-2xl font-bold text-green-400">
+          <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4">
+            <p className="text-slate-600 text-sm">Vérifiés</p>
+            <p className="text-2xl font-bold text-green-600">
               {users.filter((u) => u.is_verified).length}
             </p>
           </div>
         </div>
 
         {/* Users List */}
-        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div className="bg-white rounded-lg shadow-xl border border-slate-200 overflow-hidden">
           {filteredUsers.length === 0 ? (
-            <div className="p-8 text-center text-slate-600 dark:text-slate-400">
-              No users found matching your criteria
+            <div className="p-8 text-center text-slate-600">
+              Aucun utilisateur trouvé correspondant à vos critères
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-slate-900 border-b border-slate-200 dark:border-slate-700">
+                <thead className="bg-slate-100 border-b border-slate-200">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                      User
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      Utilisateur
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                       Contact
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                      Role
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      Rôle
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                      Status
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      Statut
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                      Joined
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
+                      Inscrit le
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-slate-600 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white dark:bg-slate-800 divide-y divide-slate-700">
+                <tbody className="bg-white divide-y divide-slate-200">
                   {filteredUsers.map((user) => (
-                    <tr key={user.id} className="hover:bg-slate-700/50">
+                    <tr key={user.id} className="hover:bg-slate-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="shrink-0 h-10 w-10">
@@ -232,7 +232,7 @@ export const Users = () => {
                               />
                             ) : (
                               <div className="h-10 w-10 rounded-full bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                                <span className="text-indigo-400 font-medium">
+                                <span className="text-indigo-600 font-medium">
                                   {(user.username ||
                                     user.firstname ||
                                     user.email)[0].toUpperCase()}
@@ -241,24 +241,24 @@ export const Users = () => {
                             )}
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                            <div className="text-sm font-medium text-slate-900">
                               {user.firstname && user.lastname
                                 ? `${user.firstname} ${user.lastname}`
                                 : user.username || "N/A"}
                             </div>
-                            <div className="text-sm text-slate-600 dark:text-slate-400">
-                              @{user.username || "no-username"}
+                            <div className="text-sm text-slate-600">
+                              @{user.username || "sans-pseudo"}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-slate-200 flex items-center gap-1">
-                          <Mail className="w-4 h-4 text-slate-600 dark:text-slate-400" />
+                        <div className="text-sm text-slate-700 flex items-center gap-1">
+                          <Mail className="w-4 h-4 text-slate-600" />
                           {user.email}
                         </div>
                         {user.phoneNumber && (
-                          <div className="text-sm text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                          <div className="text-sm text-slate-600 flex items-center gap-1">
                             <Phone className="w-4 h-4 text-slate-500" />
                             {user.phoneNumber}
                           </div>
@@ -268,8 +268,8 @@ export const Users = () => {
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                             user.isStreamer
-                              ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
-                              : "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                              ? "bg-purple-100 text-purple-700 border border-purple-200"
+                              : "bg-blue-100 text-blue-700 border border-blue-200"
                           }`}
                         >
                           {user.isStreamer ? (
@@ -285,7 +285,7 @@ export const Users = () => {
                           ) : (
                             <span className="flex items-center gap-1">
                               <UserCircle className="w-3 h-3" />
-                              User
+                              Utilisateur
                             </span>
                           )}
                         </span>
@@ -294,21 +294,21 @@ export const Users = () => {
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                             user.is_verified
-                              ? "bg-green-500/10 text-green-400 border border-green-500/20"
-                              : "bg-slate-700 text-slate-300"
+                              ? "bg-green-100 text-green-700 border border-green-200"
+                              : "bg-slate-100 text-slate-600"
                           }`}
                         >
                           {user.is_verified ? (
                             <span className="flex items-center gap-1">
                               <ShieldCheck className="w-3 h-3" />
-                              Verified
+                              Vérifié
                             </span>
                           ) : (
-                            "Unverified"
+                            "Non vérifié"
                           )}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600 dark:text-slate-400">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-600">
                         <div className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
                           {new Date(user.createdAt).toLocaleDateString()}
@@ -317,9 +317,9 @@ export const Users = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <button
                           onClick={() => setSelectedUser(user)}
-                          className="text-indigo-400 hover:text-indigo-300"
+                          className="text-indigo-600 hover:text-indigo-800"
                         >
-                          View Details
+                          Voir Détails
                         </button>
                       </td>
                     </tr>
@@ -333,18 +333,18 @@ export const Users = () => {
         {/* Detail Modal */}
         {selectedUser && (
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-white border border-slate-200 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-                    User Details
+                  <h2 className="text-2xl font-bold text-slate-900">
+                    Détails de l'Utilisateur
                   </h2>
                   <button
                     onClick={() => {
                       setSelectedUser(null);
                       setShowDeleteConfirm(false);
                     }}
-                    className="text-slate-600 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+                    className="text-slate-600 hover:text-slate-800"
                   >
                     ✕
                   </button>
@@ -369,13 +369,13 @@ export const Users = () => {
                       </div>
                     )}
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+                      <h3 className="text-xl font-semibold text-slate-900">
                         {selectedUser.firstname && selectedUser.lastname
                           ? `${selectedUser.firstname} ${selectedUser.lastname}`
                           : selectedUser.username || "N/A"}
                       </h3>
-                      <p className="text-slate-600 dark:text-slate-400">
-                        @{selectedUser.username || "no-username"}
+                      <p className="text-slate-600">
+                        @{selectedUser.username || "sans-pseudo"}
                       </p>
                     </div>
                   </div>
@@ -383,43 +383,43 @@ export const Users = () => {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-sm text-slate-500">Email</p>
-                      <p className="font-medium text-slate-200">
+                      <p className="font-medium text-slate-700">
                         {selectedUser.email}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500">Phone</p>
-                      <p className="font-medium text-slate-200">
+                      <p className="text-sm text-slate-500">Téléphone</p>
+                      <p className="font-medium text-slate-700">
                         {selectedUser.phoneNumber || "N/A"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500">Current Role</p>
-                      <p className="font-medium text-slate-200">
-                        {selectedUser.isStreamer ? "Streamer" : "User"}
+                      <p className="text-sm text-slate-500">Rôle Actuel</p>
+                      <p className="font-medium text-slate-700">
+                        {selectedUser.isStreamer ? "Streamer" : "Utilisateur"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500">Status</p>
+                      <p className="text-sm text-slate-500">Statut</p>
                       <p
                         className={`font-medium ${
                           selectedUser.is_verified
-                            ? "text-green-400"
-                            : "text-slate-400"
+                            ? "text-green-600"
+                            : "text-slate-500"
                         }`}
                       >
-                        {selectedUser.is_verified ? "Verified" : "Unverified"}
+                        {selectedUser.is_verified ? "Vérifié" : "Non vérifié"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500">Followers</p>
-                      <p className="font-medium text-slate-200">
+                      <p className="text-sm text-slate-500">Abonnés</p>
+                      <p className="font-medium text-slate-700">
                         {selectedUser.followers?.length || 0}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-slate-500">Following</p>
-                      <p className="font-medium text-slate-200">
+                      <p className="text-sm text-slate-500">Abonnements</p>
+                      <p className="font-medium text-slate-700">
                         {selectedUser.following?.length || 0}
                       </p>
                     </div>
@@ -428,34 +428,34 @@ export const Users = () => {
                   {selectedUser.bio && (
                     <div>
                       <p className="text-sm text-slate-500">Bio</p>
-                      <p className="font-medium text-slate-200">
+                      <p className="font-medium text-slate-700">
                         {selectedUser.bio}
                       </p>
                     </div>
                   )}
 
                   {selectedUser.shop && (
-                    <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-                      <p className="text-sm text-slate-500 mb-2">Shop</p>
-                      <div className="bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div className="border-t border-slate-200 pt-4">
+                      <p className="text-sm text-slate-500 mb-2">Boutique</p>
+                      <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                         <div className="flex items-center justify-between mb-2">
-                          <p className="font-medium text-slate-200">
-                            {selectedUser.shop.name || "Unnamed Shop"}
+                          <p className="font-medium text-slate-700">
+                            {selectedUser.shop.name || "Boutique Sans Nom"}
                           </p>
                           <span
                             className={`px-2 py-1 text-xs font-semibold rounded-full ${
                               selectedUser.shop.isActive
-                                ? "bg-green-500/10 text-green-400 border border-green-500/20"
-                                : "bg-orange-500/10 text-orange-400 border border-orange-500/20"
+                                ? "bg-green-100 text-green-700 border border-green-200"
+                                : "bg-orange-100 text-orange-700 border border-orange-200"
                             }`}
                           >
-                            {selectedUser.shop.isActive ? "Active" : "Pending"}
+                            {selectedUser.shop.isActive ? "Active" : "En attente"}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-400">
+                        <p className="text-sm text-slate-600">
                           {selectedUser.shop.email}
                         </p>
-                        <p className="text-sm text-slate-600 dark:text-slate-400">
+                        <p className="text-sm text-slate-600">
                           {selectedUser.shop.address}
                         </p>
                       </div>
@@ -486,15 +486,15 @@ export const Users = () => {
                             disabled={
                               isUpdating || !canBecomeStreamer(selectedUser)
                             }
-                            className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-purple-500/20"
+                            className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
                             title={
                               !canBecomeStreamer(selectedUser)
-                                ? "User must have a shop pending activation"
+                                ? "L'utilisateur doit avoir une boutique en attente d'activation"
                                 : ""
                             }
                           >
                             <Shield className="w-5 h-5" />
-                            Make Streamer
+                            Passer Streamer
                           </button>
                         ) : (
                           <button
@@ -506,30 +506,30 @@ export const Users = () => {
                               )
                             }
                             disabled={isUpdating}
-                            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20"
+                            className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg"
                           >
                             <UserCircle className="w-5 h-5" />
-                            Make Regular User
+                            Passer Utilisateur
                           </button>
                         )}
                         <button
                           onClick={() => setShowDeleteConfirm(true)}
-                          className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                          className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 flex items-center justify-center gap-2 shadow-lg"
                         >
                           <Trash2 className="w-5 h-5" />
-                          Delete User
+                          Supprimer l'Utilisateur
                         </button>
                       </div>
                     </div>
                   ) : (
-                    <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
-                      <div className="bg-red-500/10 border border-red-500/30 p-4 rounded-lg mb-4">
-                        <p className="text-red-400 font-medium mb-2">
-                          Are you sure you want to delete this user?
+                    <div className="border-t border-slate-200 pt-4">
+                      <div className="bg-red-50 border border-red-200 p-4 rounded-lg mb-4">
+                        <p className="text-red-700 font-medium mb-2">
+                          Êtes-vous sûr de vouloir supprimer cet utilisateur ?
                         </p>
-                        <p className="text-slate-600 dark:text-slate-400 text-sm">
-                          This action cannot be undone. All user data will be
-                          permanently removed.
+                        <p className="text-slate-600 text-sm">
+                          Cette action est irréversible. Toutes les données de
+                          l'utilisateur seront définitivement supprimées.
                         </p>
                       </div>
                       <div className="flex gap-3">
@@ -538,13 +538,13 @@ export const Users = () => {
                           disabled={isUpdating}
                           className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
-                          {isUpdating ? "Deleting..." : "Confirm Delete"}
+                          {isUpdating ? "Suppression..." : "Confirmer la Suppression"}
                         </button>
                         <button
                           onClick={() => setShowDeleteConfirm(false)}
-                          className="flex-1 bg-slate-700 text-slate-200 py-2 px-4 rounded-md hover:bg-slate-600"
+                          className="flex-1 bg-slate-200 text-slate-700 py-2 px-4 rounded-md hover:bg-slate-300"
                         >
-                          Cancel
+                          Annuler
                         </button>
                       </div>
                     </div>
