@@ -20,7 +20,7 @@ export const Users = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterRole, setFilterRole] = useState<"all" | "streamer" | "user">(
-    "all"
+    "all",
   );
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -62,7 +62,7 @@ export const Users = () => {
           u.username?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           u.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
           u.firstname?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          u.lastname?.toLowerCase().includes(searchTerm.toLowerCase())
+          u.lastname?.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 
@@ -89,13 +89,13 @@ export const Users = () => {
   const handleUpdateUserRole = async (
     id: string,
     role: string,
-    isStreamer: boolean
+    isStreamer: boolean,
   ) => {
     setIsUpdating(true);
     try {
       await usersAPI.update(id, { role, isStreamer });
       setUsers((prev) =>
-        prev.map((u) => (u.id === id ? { ...u, role, isStreamer } : u))
+        prev.map((u) => (u.id === id ? { ...u, role, isStreamer } : u)),
       );
       if (selectedUser?.id === id) {
         setSelectedUser({ ...selectedUser, role, isStreamer });
@@ -117,7 +117,9 @@ export const Users = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-600">Chargement des utilisateurs...</div>
+          <div className="text-xl text-slate-600">
+            Chargement des utilisateurs...
+          </div>
         </div>
       </Layout>
     );
@@ -129,7 +131,9 @@ export const Users = () => {
         <h1 className="text-3xl font-bold text-slate-900 mb-2">
           Gestion des Utilisateurs
         </h1>
-        <p className="text-slate-600 mb-6">Gérer tous les utilisateurs de la plateforme</p>
+        <p className="text-slate-600 mb-6">
+          Gérer tous les utilisateurs de la plateforme
+        </p>
 
         {/* Filters */}
         <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4 mb-6">
@@ -449,7 +453,9 @@ export const Users = () => {
                                 : "bg-orange-100 text-orange-700 border border-orange-200"
                             }`}
                           >
-                            {selectedUser.shop.isActive ? "Active" : "En attente"}
+                            {selectedUser.shop.isActive
+                              ? "Active"
+                              : "En attente"}
                           </span>
                         </div>
                         <p className="text-sm text-slate-600">
@@ -480,7 +486,7 @@ export const Users = () => {
                               handleUpdateUserRole(
                                 selectedUser.id,
                                 "streamer",
-                                true
+                                true,
                               )
                             }
                             disabled={
@@ -502,7 +508,7 @@ export const Users = () => {
                               handleUpdateUserRole(
                                 selectedUser.id,
                                 "user",
-                                false
+                                false,
                               )
                             }
                             disabled={isUpdating}
@@ -538,7 +544,9 @@ export const Users = () => {
                           disabled={isUpdating}
                           className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 disabled:opacity-50 flex items-center justify-center gap-2"
                         >
-                          {isUpdating ? "Suppression..." : "Confirmer la Suppression"}
+                          {isUpdating
+                            ? "Suppression..."
+                            : "Confirmer la Suppression"}
                         </button>
                         <button
                           onClick={() => setShowDeleteConfirm(false)}

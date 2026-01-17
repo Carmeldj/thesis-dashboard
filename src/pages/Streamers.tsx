@@ -59,7 +59,7 @@ export const Streamers = () => {
           s.username?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           s.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
           s.firstname?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          s.lastname?.toLowerCase().includes(searchTerm.toLowerCase())
+          s.lastname?.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 
@@ -71,7 +71,7 @@ export const Streamers = () => {
     try {
       await usersAPI.update(id, { is_verified: isVerified });
       setStreamers((prev) =>
-        prev.map((s) => (s.id === id ? { ...s, is_verified: isVerified } : s))
+        prev.map((s) => (s.id === id ? { ...s, is_verified: isVerified } : s)),
       );
       setSelectedStreamer(null);
     } catch (error) {
@@ -86,7 +86,9 @@ export const Streamers = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-600">Chargement des streamers...</div>
+          <div className="text-xl text-slate-600">
+            Chargement des streamers...
+          </div>
         </div>
       </Layout>
     );
@@ -357,7 +359,9 @@ export const Streamers = () => {
                             : "text-orange-600"
                         }`}
                       >
-                        {selectedStreamer.is_verified ? "Vérifié" : "En attente"}
+                        {selectedStreamer.is_verified
+                          ? "Vérifié"
+                          : "En attente"}
                       </p>
                     </div>
                     <div>

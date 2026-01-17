@@ -46,7 +46,7 @@ export const Dashboard = () => {
 
   const statCards = [
     {
-      title: "Total Users",
+      title: "Total Utilisateurs",
       value: stats.totalUsers,
       icon: Users,
       color: "bg-blue-500",
@@ -58,25 +58,25 @@ export const Dashboard = () => {
       color: "bg-purple-500",
     },
     {
-      title: "Verified Streamers",
+      title: "Streamers Vérifiés",
       value: stats.verifiedStreamers,
       icon: CheckCircle,
       color: "bg-green-500",
     },
     {
-      title: "Pending Streamers",
+      title: "Streamers En Attente",
       value: stats.pendingStreamers,
       icon: XCircle,
       color: "bg-orange-500",
     },
     {
-      title: "Total Shops",
+      title: "Total Boutiques",
       value: stats.totalShops,
       icon: Store,
       color: "bg-indigo-500",
     },
     {
-      title: "Active Shops",
+      title: "Boutiques Actives",
       value: stats.activeShops,
       icon: CheckCircle,
       color: "bg-teal-500",
@@ -87,8 +87,8 @@ export const Dashboard = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-600 dark:text-slate-400">
-            Loading dashboard...
+          <div className="text-xl text-slate-600">
+            Chargement du tableau de bord...
           </div>
         </div>
       </Layout>
@@ -98,30 +98,28 @@ export const Dashboard = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-          Dashboard
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          Tableau de Bord
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 mb-8">
-          Overview of your platform statistics
+        <p className="text-slate-600 mb-8">
+          Aperçu des statistiques de votre plateforme
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {statCards.map((card, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 p-6 hover:shadow-2xl hover:border-slate-300 dark:hover:border-slate-600 transition"
+              className="bg-white rounded-lg shadow-xl border border-slate-200 p-6 hover:shadow-2xl hover:border-slate-300 transition"
             >
               <div className="flex items-center justify-between mb-4">
                 <div className={`${card.color} p-3 rounded-lg shadow-lg`}>
                   <card.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
-              <h3 className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-1">
+              <h3 className="text-slate-600 text-sm font-medium mb-1">
                 {card.title}
               </h3>
-              <p className="text-3xl font-bold text-slate-900 dark:text-slate-100">
-                {card.value}
-              </p>
+              <p className="text-3xl font-bold text-slate-900">{card.value}</p>
             </div>
           ))}
         </div>

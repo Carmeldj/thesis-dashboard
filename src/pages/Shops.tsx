@@ -59,7 +59,7 @@ export const Shops = () => {
         (s) =>
           s.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
           s.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          s.address.toLowerCase().includes(searchTerm.toLowerCase())
+          s.address.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
 
@@ -69,14 +69,14 @@ export const Shops = () => {
   const handleToggleShopStatus = async (
     id: string,
     userId: string,
-    isActive: boolean
+    isActive: boolean,
   ) => {
     setIsUpdating(true);
     try {
       await shopsAPI.update(id, { isActive });
       await usersAPI.update(userId, { isStreamer: isActive });
       setShops((prev) =>
-        prev.map((s) => (s.id === id ? { ...s, isActive } : s))
+        prev.map((s) => (s.id === id ? { ...s, isActive } : s)),
       );
       setSelectedShop(null);
     } catch (error) {
@@ -91,7 +91,9 @@ export const Shops = () => {
     return (
       <Layout>
         <div className="flex items-center justify-center h-full">
-          <div className="text-xl text-slate-600">Chargement des boutiques...</div>
+          <div className="text-xl text-slate-600">
+            Chargement des boutiques...
+          </div>
         </div>
       </Layout>
     );
@@ -103,7 +105,9 @@ export const Shops = () => {
         <h1 className="text-3xl font-bold text-slate-900 mb-2">
           Gestion des Boutiques
         </h1>
-        <p className="text-slate-600 mb-6">Gérer et activer les comptes boutiques</p>
+        <p className="text-slate-600 mb-6">
+          Gérer et activer les comptes boutiques
+        </p>
 
         {/* Filters */}
         <div className="bg-white rounded-lg shadow-xl border border-slate-200 p-4 mb-6">
@@ -324,7 +328,9 @@ export const Shops = () => {
                   </div>
 
                   <div className="border-t border-slate-200 pt-4">
-                    <p className="text-sm text-slate-500 mb-2">Propriétaire de la Boutique</p>
+                    <p className="text-sm text-slate-500 mb-2">
+                      Propriétaire de la Boutique
+                    </p>
                     <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                       <p className="font-medium text-slate-700">
                         {selectedShop.user?.firstname &&
@@ -350,7 +356,7 @@ export const Shops = () => {
                           handleToggleShopStatus(
                             selectedShop.id,
                             selectedShop.user!.id,
-                            true
+                            true,
                           )
                         }
                         disabled={isUpdating}
@@ -365,7 +371,7 @@ export const Shops = () => {
                           handleToggleShopStatus(
                             selectedShop.id,
                             selectedShop.user!.id,
-                            false
+                            false,
                           )
                         }
                         disabled={isUpdating}
