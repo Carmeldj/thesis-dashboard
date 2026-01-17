@@ -15,14 +15,14 @@ export const Sidebar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { path: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-    { path: "/users", icon: UserCircle, label: "Users" },
+    { path: "/dashboard", icon: LayoutDashboard, label: "Tableau de Bord" },
+    { path: "/users", icon: UserCircle, label: "Utilisateurs" },
     { path: "/streamers", icon: Users, label: "Streamers" },
-    { path: "/shops", icon: Store, label: "Shops" },
+    { path: "/shops", icon: Store, label: "Boutiques" },
   ];
 
   return (
-    <aside className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white w-64 min-h-screen p-4 flex flex-col border-r border-slate-200 dark:border-slate-800">
+    <aside className="bg-slate-50 text-slate-900 w-64 min-h-screen p-4 flex flex-col border-r border-slate-200">
       <nav className="flex-1">
         <ul className="space-y-2">
           {navItems.map((item) => (
@@ -31,8 +31,8 @@ export const Sidebar = () => {
                 to={item.path}
                 className={`flex items-center space-x-3 p-3 rounded-lg transition ${
                   isActive(item.path)
-                    ? "bg-blue-600 text-white shadow-lg shadow-indigo-500/20"
-                    : "text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800"
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "text-slate-600 hover:bg-slate-200"
                 }`}
               >
                 <item.icon className="w-5 h-5" />
@@ -43,21 +43,17 @@ export const Sidebar = () => {
         </ul>
       </nav>
 
-      <div className="border-t border-slate-200 dark:border-slate-800 pt-4">
+      <div className="border-t border-slate-200 pt-4">
         <div className="mb-3 px-3">
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Logged in as
-          </p>
-          <p className="font-medium truncate text-slate-700 dark:text-slate-200">
-            {user?.email}
-          </p>
+          <p className="text-sm text-slate-500">Connecté en tant que</p>
+          <p className="font-medium truncate text-slate-700">{user?.email}</p>
         </div>
         <button
           onClick={logout}
-          className="flex items-center space-x-3 p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 w-full transition"
+          className="flex items-center space-x-3 p-3 rounded-lg text-slate-600 hover:bg-slate-200 w-full transition"
         >
           <LogOut className="w-5 h-5" />
-          <span className="font-medium">Logout</span>
+          <span className="font-medium">Déconnexion</span>
         </button>
       </div>
     </aside>
